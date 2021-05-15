@@ -1,0 +1,176 @@
+/* components/linklink/linklink.wxss */
+.game-box {
+  /* padding-top: 10px;
+  padding-bottom: 10px; */
+  position: relative;
+  z-index: 1;
+}
+
+.game-table {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.tr {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.bg,
+.td {
+  width: 100rpx;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.td {
+  text-align: center;
+  /* border-left: 1px solid rgba(0, 0, 0, 0.1);
+  border-top: 1px solid rgba(0, 0, 0, 0.1); */
+}
+
+.td.is-td-end {
+  /* border-right: 1px solid rgba(0, 0, 0, 0.1); */
+}
+
+.td.is-tr-end {
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.1); */
+}
+
+.td.is-empty {
+  /* border: 1px solid transparent */
+}
+
+.td.is-selected {
+  /* border:1px solid red; */
+}
+
+.td.is-linked-pointer {
+  /* border:1px solid red; */
+}
+
+.td.is-selected .item-hover,
+.td.is-linked-pointer .item-hover {
+  visibility: visible;
+}
+
+.td.is-linked.is-animating {
+  /* background-color: red; */
+  position: relative;
+  z-index: 1;
+}
+
+.td.is-linked.is-animating::before,
+.td.is-linked.is-animating::after {
+  position: absolute;
+  z-index: 2;
+  content: '';
+  background-color: #FFC500;
+}
+
+.td.is-linked.is-animating.link-up::before {
+  width: 6rpx;
+  top: 0;
+  bottom: 50%;
+  left: 50%;
+}
+
+.td.is-linked.is-animating.link-down::before {
+  width: 6rpx;
+  top: 50%;
+  bottom: 0;
+  left: 50%;
+}
+
+.td.is-linked.is-animating.link-up.link-down::before {
+  top: 0;
+  bottom: 0;
+}
+
+.td.is-linked.is-animating.link-right::after {
+  height: 6rpx;
+  top: 50%;
+  left: 50%;
+  right: 0;
+}
+
+.td.is-linked.is-animating.link-left::after {
+  height: 6rpx;
+  top: 50%;
+  left: 0;
+  right: 50%;
+}
+
+.td.is-linked.is-animating.link-left.link-right::after {
+  left: 0;
+  right: 0;
+}
+
+.td {
+  position: relative;
+  z-index: 1;
+}
+
+.item-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  visibility: hidden;
+}
+
+.score-box {
+  position: relative;
+  z-index: 1;
+  margin-top: 32rpx;
+  margin-bottom: 32rpx;
+  color: #FF6366;
+  font-size: 40rpx;
+  text-align: center;
+}
+
+.score-box .time {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  color: #FFC500;
+  background-image: url(https://616e-annual-meeting-5gqdw8sbc8600f61-1304630491.tcb.qcloud.la/images/linklink/time.png);
+  background-repeat: no-repeat;
+  background-size: auto 34rpx;
+  background-position: left 44%;
+  padding-left: 36rpx;
+}
+
+.note {
+  font-size: 24rpx;
+  color: #006EFF;
+  border: 2rpx solid #006EFF;
+  padding: 10rpx 0;
+  text-align: center;
+  border-radius: 60rpx;
+}
+
+.btn {
+  margin-bottom: 16rpx;
+}
+
+.btn:last-child {
+  margin-bottom: 0;
+}
+
+.btn-hover {
+  opacity: 0.7;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
