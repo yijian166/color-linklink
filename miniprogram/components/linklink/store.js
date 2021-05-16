@@ -12,7 +12,7 @@ const SizeConf = {
   width: wxInfo.windowWidth,
   bodyHeight: wxInfo.windowHeight - wxInfo.statusBarHeight - 44
 }
-// console.log('---sizecon', SizeConf)
+console.log('---sizecon', SizeConf)
 const TimeoutMax = 40;
 
 // 需要连的点 {value,sameCode}[]
