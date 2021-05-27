@@ -3,12 +3,12 @@
  * 封装通用的方法
  */
 export default {
-  async callCloudFunction(name, data = {}) {
+  async callCloudFunction(name, params = {}) {
     let resp = {};
     try {
       const res = await wx.cloud.callFunction({
         name,
-        data,
+        data:params,
       });
       const {
         result = {}

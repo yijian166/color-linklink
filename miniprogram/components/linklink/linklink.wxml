@@ -1,9 +1,9 @@
 <!--components/linklink/linklink.wxml-->
-<view class="score-box" style="padding-left:32rpx;padding-right:32rpx">
-  <text class="time" style="left:32rpx">{{gameTimeLeft}} 秒</text>
-  <text>本局得分: {{gameScoreCount}}</text>
+<view class="score-box" style="margin-left:{{gameTableTdWidth /2 }}rpx;margin-right:{{gameTableTdWidth /2}}rpx">
+  <text class="time" style="left:0rpx;color: {{gameColors[0]}}">{{gameTimeLeft}} 秒</text>
+  <text style="color: {{gameColors[1]}}">本局得分: {{gameScoreCount}}</text>
 </view>
-<view class="note" style="margin-left:{{gameTableTdWidth /2 }}rpx;margin-right:{{gameTableTdWidth /2}}rpx">
+<view class="note" style="color: {{gameColors[2]}};border-color: {{gameColors[2]}};margin-left:{{gameTableTdWidth /2 }}rpx;margin-right:{{gameTableTdWidth /2}}rpx">
   25s内消耗完，可的额外奖励，用时越短，得分越高
 </view>
 <view class="game-box">
@@ -12,13 +12,15 @@
     <view wx:key="trIdx" wx:for="{{gameTable}}" wx:for-item="tr" wx:for-index="trIdx" class="tr">
       <view wx:key="tdIdx" wx:for="{{tr}}" wx:for-item="td" wx:for-index="tdIdx" data-trIdx="{{trIdx}}"
         data-tdIdx="{{tdIdx}}" bindtap="tapPointer" class="td {{ td.extraClasses }}"
-        style="height:{{td.halfHeight ? gameTableTdWidth / 2 : gameTableTdWidth}}rpx;width:{{td.halfWidth ? gameTableTdWidth /2: gameTableTdWidth}}rpx;line-height:{{gameTableTdWidth}}rpx">
-        <image wx:if="{{!td.isEmpty}}" style="height:{{gameTableTdWidth}}rpx;width:{{gameTableTdWidth}}rpx"
+        style="--link-color:{{frontColor}}; height:{{td.halfHeight ? gameTableTdWidth / 2 : gameTableTdWidth}}rpx;width:{{td.halfWidth ? gameTableTdWidth /2: gameTableTdWidth}}rpx;line-height:{{gameTableTdWidth}}rpx">
+        <!-- <image wx:if="{{!td.isEmpty}}" style="height:{{gameTableTdWidth}}rpx;width:{{gameTableTdWidth}}rpx"
           src="./images/{{td.value}}.png" background-size="contain" background-position="center"
-          background-repeat="no-repeat"></image>
-        <image class="item-hover" style="height:{{gameTableTdWidth}}rpx;width:{{gameTableTdWidth}}rpx"
-          src="./images/hover.png" background-size="contain" background-position="center" background-repeat="no-repeat">
-        </image>
+          background-repeat="no-repeat"></image> -->
+        <view wx:if="{{!td.isEmpty}}" style="height:{{gameTableTdWidth}}rpx;width:{{gameTableTdWidth}}rpx;background-color: {{td.value}}"></view>
+        <view class="item-hover" style="height:{{gameTableTdWidth}}rpx;width:{{gameTableTdWidth}}rpx; border:4rpx solid transparent">
+          <view class="item-hover-content" style="border:4rpx solid {{frontColor}};margin-left: 4rpx'margin-right:4rpx">
+          </view>
+        </view>
       </view>
     </view>
   </view>
@@ -27,7 +29,7 @@
   <!-- <button bindtap="start" wx:if="{{gameTable.length === 0}}">开始</button> -->
   <view wx:if="{{gameTable.length > 0 && !gameIsFinished}}" class="actions">
     <!-- <button bindtap="doPause">暂停</button> -->
-    <button bindtap="start" style="background:#0087FF;color:#fff;width:686rpx" hover-class="btn-hover">洗牌</button>
+    <button bindtap="start" style="background:{{gameColors[3]}};color:{{frontColor}};width:686rpx" hover-class="btn-hover">洗牌</button>
     <!-- <button bindtap="helpGame">帮助</button> -->
     <!-- <button wx:if="{{gameIsFinished}}" bindtap="playNext">再来一局</button> -->
   </view>

@@ -37,7 +37,7 @@
     "minifyWXSS": true
   },
   "appid": "wxb1eadf387f4b6bc9",
-  "projectname": "对战连连看",
+  "projectname": "颜色连连看",
   "libVersion": "2.14.1",
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {

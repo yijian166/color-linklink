@@ -1,13 +1,21 @@
 /**index.wxss**/
 
 page {
-  background: #f6f6f6;
+  background: #fff;
   /* display: flex;
   flex-direction: column;
   justify-content: flex-start; */
 }
 .container {
   height: 100vh;
+}
+.container.no-game {
+  justify-content: center;
+}
+
+.container.no-game .userinfo-avatar {
+  width: 200rpx;
+  height: 200rpx;
 }
 
 .userinfo, .uploader, .tunnel {
@@ -48,7 +56,6 @@ page {
 .userinfo-avatar[size] {
   width: 100rpx;
 }
-
 
 .userinfo-avatar:after {
   border: none;

@@ -71,7 +71,7 @@
   position: absolute;
   z-index: 2;
   content: '';
-  background-color: #FFC500;
+  background-color: var(--link-color);
 }
 
 .td.is-linked.is-animating.link-up::before {
@@ -125,6 +125,16 @@
   bottom: 0;
   z-index: 1;
   visibility: hidden;
+  box-sizing: content-box;
+}
+.item-hover-content {
+  position: absolute;
+  top: 6px;
+  left:  6px;
+  right:  6px;
+  bottom:  6px;
+  border-radius: 4rpx;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
 }
 
 .score-box {
@@ -142,11 +152,11 @@
   top: 0;
   bottom: 0;
   color: #FFC500;
-  background-image: url(https://616e-annual-meeting-5gqdw8sbc8600f61-1304630491.tcb.qcloud.la/images/linklink/time.png);
+  /* background-image: url(https://616e-annual-meeting-5gqdw8sbc8600f61-1304630491.tcb.qcloud.la/images/linklink/time.png);
   background-repeat: no-repeat;
   background-size: auto 34rpx;
   background-position: left 44%;
-  padding-left: 36rpx;
+  padding-left: 36rpx; */
 }
 
 .note {

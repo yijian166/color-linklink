@@ -8,7 +8,15 @@ Component({
    * 组件的属性列表
    */
   properties: {
-
+    gameColors: {
+      type: Array
+    },
+    frontColor: {
+      type: String
+    },
+    bgColor: {
+      type: String
+    }
   },
   behaviors: [storeBindingsBehavior],
   /**
@@ -69,9 +77,9 @@ Component({
   lifetimes: {
     // 生命周期函数，可以为函数，或一个在methods段中定义的方法名
     attached: function () {
-      this.createTable()
+      this.createTable({colors: this.data.gameColors})
       this.syncGlobalData()
-      // console.log('---attached', this.data.gameTable)
+      // console.log('---attached')
     },
     moved: function () { },
     detached: function () {
@@ -141,7 +149,7 @@ Component({
       this.createTable()
     },
     playNext() {
-      this.createTable(true)
+      this.createTable({playNext:true})
     },
     _cleanLink(linkedPointersCommonSt) {
       wx.nextTick(() => {
@@ -215,7 +223,9 @@ Component({
         // 结算，发送游戏结果
         this.setData({ endGame: { ...this.data.endGame, isSubmitting: true } })
         console.log('!!!!---submitGameScore linklink', this.data.gameUUid, GameCode, this.data.gameScore)
-        const { res, err } = await utils.submitGameScore(this.data.gameUUid, GameCode, this.data.gameScore)
+        // const { res, err } = await utils.submitGameScore(this.data.gameUUid, GameCode, this.data.gameScore)
+        this.triggerEvent('end',{gameScore: this.data.gameScore})
+        return
         console.log('---submitGameScore linklink result', res, err)
         // if (err) throw new Error(err?.message)
         this.setData({ endGame: { ...this.data.endGame, isSubmitting: false, } })

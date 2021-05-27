@@ -1,0 +1,13 @@
+<view class="box">
+  <view wx:for="{{list}}" class="item">
+   
+    <view class="colors">
+      <view class="color-item" wx:for="{{item.colors}}" wx:for-item="color" style="background-color: {{color}}"></view>
+    </view>
+    <view class="content">
+      <text class="score">{{item.score || 0}}</text>
+      <text class="time">{{item.time}}</text>
+    </view>
+    
+  </view>
+</view>

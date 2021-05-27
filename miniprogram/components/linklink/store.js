@@ -15,14 +15,7 @@ const SizeConf = {
 console.log('---sizecon', SizeConf)
 const TimeoutMax = 40;
 
-// 需要连的点 {value,sameCode}[]
-const Pointers = [];
-for (let i = 0; i < 4; i++) {
-  Pointers.push({
-    value: i + 1,
-    sameCode: i + 1
-  })
-}
+
 Object.defineProperty(Array.prototype, 'first', {
   get() {
     if (this.length === 0) {
@@ -50,7 +43,7 @@ export const store = observable({
   // 基本配置
   CanvasHNum,
   CanvasVNum,
-  Pointers,
+  Pointers: [],
   TimeoutMax,
 
   // 游戏棋盘
@@ -258,8 +251,19 @@ export const store = observable({
     this.linkedCount = 0
   }),
   // 创建棋盘
-  createTable: action(function (playNext = false) {
-    // console.log('--createTable---')
+  createTable: action(function ({colors = [],playNext = false} = {}) {
+    console.log('--createTable---',colors)
+    if(Array.isArray(colors) &&  colors.length) {
+      // 需要连的点 {value,sameCode}[]
+      const Pointers = [];
+      for (let i = 0; i < colors.length; i++) {
+        Pointers.push({
+          value: colors[i],
+          sameCode: i + 1
+        })
+      }
+      this.Pointers = Pointers
+    }
     let _rList = []
     if (this.CanvasVNum * this.CanvasHNum % 2 !== 0) {
       // 棋盘数必须是偶数

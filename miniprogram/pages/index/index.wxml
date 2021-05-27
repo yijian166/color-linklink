@@ -1,21 +1,27 @@
 <!--index.wxml-->
-<view class="container">
+<view class="container {{gameId ? 'has-game':'no-game'}}" style="background-color:{{bgColor}}">
   <page-meta>
     <navigation-bar
-      title="颜色对对战"
+      title="颜色连连看"
       loading="{{false}}"
-      front-color="#fff"
-      background-color="#000"
-    />
+      front-color="{{frontColor || gameColors[0]}}"
+      background-color="{{bgColor}}"
+    /> 
   </page-meta>
   <button 
-        bindtap="getUserProfile"
-        class="userinfo-avatar"
-        style="background-image: url({{userInfo.avatarUrl}})"
-        size="default"
-        data-openid="{{_openid}}"
-      ></button>
-
-  <linklink />
-
+    bindtap="getUserProfile"
+    class="userinfo-avatar"
+    style="background-image: url({{userInfo.avatarUrl}})"
+    size="default"
+    data-openid="{{_openid}}"
+  >
+  </button>
+  <text style="font-size: 14px;height: 20px;color: {{frontColor || gameColors[0]}}">总积分：{{userInfo.score || ''}}</text>
+  <view wx:if="{{gameId}}">
+    <linklink gameColors="{{gameColors}}" bgColor="{{bgColor}}" frontColor="{{frontColor || gameColors[0]}}" bindend="endGame"/>
+  </view>
+  <view wx:else>
+    <button bindtap="newGame" style="background:#0087FF;color:#fff;width:600rpx;margin-top:60rpx" hover-class="btn-hover">来一局</button>
+    <button bindtap="toHistory" style="color:#666;width:600rpx;margin-top:40rpx" hover-class="btn-hover">历史</button>
+  </view>
 </view>
