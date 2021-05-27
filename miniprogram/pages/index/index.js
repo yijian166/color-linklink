@@ -18,6 +18,7 @@ Page({
       gameColors: [],
       bgColor: '#f5f5f5',
       frontColor: '#000',
+      gameId: ''
     })
   },
  
@@ -90,6 +91,10 @@ Page({
         icon: 'error'
       })
     }
+    wx.showToast({
+      title: '结算成功',
+      icon: "success"
+    })
     this.reSet()
     await this.getInfo()
   },
