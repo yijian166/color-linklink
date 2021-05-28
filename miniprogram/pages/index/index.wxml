@@ -14,16 +14,17 @@
     style="background-image: url({{userInfo.avatarUrl}})"
     size="default"
     data-openid="{{_openid}}"
+    wx:if="{{!gameId}}" 
   >
   </button>
-  <text style="font-size: 14px;height: 20px;color: {{frontColor || gameColors[0]}}">
+  <text wx:if="{{!gameId}}" style="font-size: 14px;height: 20px;color: {{frontColor || gameColors[0]}}">
     总积分：{{userInfo.score || ''}}  ｜ 全员排名：{{rankN > 0 ? rankN : ''}}
   </text>
-  <view wx:if="{{gameId}}">
+  <view wx:if="{{gameId}}" >
     <linklink gameColors="{{gameColors}}" bgColor="{{bgColor}}" frontColor="{{frontColor || gameColors[0]}}" bindend="endGame"/>
   </view>
   <view wx:else>
-    <button bindtap="newGame" style="background:#0087FF;color:#fff;width:600rpx;margin-top:60rpx" hover-class="btn-hover">来一局</button>
+    <button bindtap="newGame" style="background:#0087FF;color:#fff;width:600rpx;margin-top:80rpx" hover-class="btn-hover">来一局</button>
     <button bindtap="toHistory" style="color:#666;width:600rpx;margin-top:40rpx" hover-class="btn-hover">历史</button>
   </view>
 </view>

@@ -31,15 +31,18 @@ exports.main = async (event, context) => {
   } catch (error) {
     console.log('---error',error)
   }
-  const now = new Date()
-  await db.collection('user').doc(OPENID).set({
-    data: {
-      _createTime:now,
-      ...userInfo,
-      _updateTime:now,
-      _openid:OPENID,
-    }
-  })
+  if(!userInfo._openid) {
+    const now = new Date()
+    await db.collection('user').doc(OPENID).set({
+      data: {
+        _createTime:now,
+        ...userInfo,
+        _updateTime:now,
+        _openid:OPENID,
+      }
+    })
+  }
+  
   return {
     code:0,
     data: {

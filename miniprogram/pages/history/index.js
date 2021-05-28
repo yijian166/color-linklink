@@ -11,11 +11,17 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  async onLoad (options) {
-    const res = await wx.cloud.database().collection('game').get()
-    console.log('--',res)
+  async onLoad(options) {
+    const res = await wx.cloud.database().collection('game').aggregate().match({
+      deActive: wx.cloud.database().command.neq(true)
+    })
+    .sort({
+      _createTime: -1
+    })
+    .limit(1000)
+    .end()
     this.setData({
-      list: res.data.sort((a,b)=> new Date(b._createTime).getTime() - new Date(a._createTime).getTime()).map(item => {
+      list: res.list.map(item => {
         item.time = new Date(item._createTime).toLocaleString()
         return item
       })
