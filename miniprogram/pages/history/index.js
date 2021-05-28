@@ -15,7 +15,7 @@ Page({
     const res = await wx.cloud.database().collection('game').get()
     console.log('--',res)
     this.setData({
-      list: res.data.sort((a,b)=> new Date(a._createTime).getTime() - new Date(b._createTime).getTime()).map(item => {
+      list: res.data.sort((a,b)=> new Date(b._createTime).getTime() - new Date(a._createTime).getTime()).map(item => {
         item.time = new Date(item._createTime).toLocaleString()
         return item
       })

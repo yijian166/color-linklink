@@ -10,9 +10,10 @@ Page({
     gameColors: [],
     bgColor: '',
     frontColor: '',
-    gameId: ''
+    gameId: '',
+    rankN: 0
   },
-  reSet(){
+  reSet() {
     this.setData({
       _openid: '',
       gameColors: [],
@@ -21,7 +22,7 @@ Page({
       gameId: ''
     })
   },
- 
+
   async onLoad() {
     this.reSet()
     await this.getInfo()
@@ -48,6 +49,19 @@ Page({
       userInfo: data.user,
       hasUserInfo: true
     })
+    const res = await utils.callCloudFunction('getUserRank')
+    console.log('---getUserRank', res)
+    if (res.code) {
+      return
+    }
+    for (let i = 0; i < res.data.length; i++) {
+      if (res.data[i]._openid === data._openid) {
+        console.log('---getUserRank i', i)
+        this.setData({
+          rankN: i + 1
+        })
+      }
+    }
   },
   async newGame() {
     console.log('---newGame')

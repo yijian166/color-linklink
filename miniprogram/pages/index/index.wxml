@@ -1,6 +1,5 @@
 <!--index.wxml-->
-<view class="container {{gameId ? 'has-game':'no-game'}}" style="background-color:{{bgColor}}">
-  <page-meta>
+<page-meta>
     <navigation-bar
       title="颜色连连看"
       loading="{{false}}"
@@ -8,6 +7,7 @@
       background-color="{{bgColor}}"
     /> 
   </page-meta>
+<view class="container {{gameId ? 'has-game':'no-game'}}" style="background-color:{{bgColor}}">
   <button 
     bindtap="getUserProfile"
     class="userinfo-avatar"
@@ -16,7 +16,9 @@
     data-openid="{{_openid}}"
   >
   </button>
-  <text style="font-size: 14px;height: 20px;color: {{frontColor || gameColors[0]}}">总积分：{{userInfo.score || ''}}</text>
+  <text style="font-size: 14px;height: 20px;color: {{frontColor || gameColors[0]}}">
+    总积分：{{userInfo.score || ''}}  ｜ 全员排名：{{rankN > 0 ? rankN : ''}}
+  </text>
   <view wx:if="{{gameId}}">
     <linklink gameColors="{{gameColors}}" bgColor="{{bgColor}}" frontColor="{{frontColor || gameColors[0]}}" bindend="endGame"/>
   </view>

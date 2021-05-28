@@ -37,7 +37,7 @@
     "minifyWXSS": true
   },
   "appid": "wxb1eadf387f4b6bc9",
-  "projectname": "颜色连连看",
+  "projectname": "%E9%A2%9C%E8%89%B2%E8%BF%9E%E8%BF%9E%E7%9C%8B",
   "libVersion": "2.14.1",
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
   "condition": {
