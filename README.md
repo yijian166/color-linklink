@@ -27,7 +27,7 @@
 
 连连看开局，随机从后端获取颜色方案，通过连连看的方式来感知颜色的魅力。
 
-![颜色连连看]](./images/linklink.jpeg)
+![颜色连连看](./images/linklink.jpeg)
 
 模块三： 【TODO】连连看对局
 
@@ -35,7 +35,7 @@
 
 体验二维码/网址：
 
-![IMG_4508.JPG](./images/qrcode.jpg)
+![qrcode](./images/qrcode.JPG)
 
 源码链接
 
