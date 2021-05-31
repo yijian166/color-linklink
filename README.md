@@ -35,7 +35,7 @@
 
 体验二维码/网址：
 
-![qrcode](./images/qrcode.jpg)
+![qrcode](./images/qrcode1.jpg)
 
 源码链接
 
